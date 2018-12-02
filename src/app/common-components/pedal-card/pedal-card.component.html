@@ -3,6 +3,11 @@
     <div class="card-body">
         <h5 class="card-title">{{name}}</h5>
         <p class="card-text">{{manufacturerName}}</p>
+        <div class="types">
+            <span class="type" *ngFor="let type of types">
+                {{type}}
+            </span>
+        </div>
         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
     </div>
 </div>

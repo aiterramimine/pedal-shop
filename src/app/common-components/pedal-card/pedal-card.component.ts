@@ -10,10 +10,12 @@ export class PedalCardComponent {
     name: string;
     manufacturerName: string;
     previewUrl: string;
+    types: string[];
 
     constructor() {
         this.name = 'dummy';
         this.manufacturerName = 'dummyManufacturer';
         this.previewUrl = 'https://picsum.photos/200';
+        this.types = ['Instrument', 'Guitare'];
     }
 }
