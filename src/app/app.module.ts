@@ -4,16 +4,18 @@ import {RouterModule, Routes} from '@angular/router';
 
 import { AppComponent } from './app.component';
 import {HomePageComponent} from './pages/home/home-page.component';
+import {PedalCardComponent} from './common-components/pedal-card/pedal-card.component';
 
 import { from } from 'rxjs';
 const appRoutes: Routes = [
-  {path: 'home', component: HomePageComponent}
+  {path: '', component: HomePageComponent}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomePageComponent
+    HomePageComponent,
+    PedalCardComponent
   ],
   imports: [
     RouterModule.forRoot(
