@@ -5,17 +5,19 @@ import {RouterModule, Routes} from '@angular/router';
 import { AppComponent } from './app.component';
 import {HomePageComponent} from './pages/home/home-page.component';
 import {PedalCardComponent} from './common-components/pedal-card/pedal-card.component';
+import { PluginDetailsComponent } from './pages/plugin-details/plugin-details.component';
 
-import { from } from 'rxjs';
 const appRoutes: Routes = [
-  {path: '', component: HomePageComponent}
+  {path: '', component: HomePageComponent},
+  {path: 'details/:id', component: PluginDetailsComponent}
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     HomePageComponent,
-    PedalCardComponent
+    PedalCardComponent,
+    PluginDetailsComponent
   ],
   imports: [
     RouterModule.forRoot(

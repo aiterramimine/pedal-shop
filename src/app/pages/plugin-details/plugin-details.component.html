@@ -1,0 +1,13 @@
+<div class="container">
+    <p class="h2">Pedal Name</p>
+    <div class="img-container">
+        <img [src]="previewUrl" alt="Card image cap">
+    </div>
+    
+    <div class="types">
+        <span class="type" *ngFor="let type of types">
+            {{type}}
+        </span>
+    </div>
+
+</div>
