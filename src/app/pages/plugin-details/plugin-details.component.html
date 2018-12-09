@@ -1,13 +1,18 @@
 <div class="container">
+    <p class="h4">{{author}}</p>
+    <a [href]="repoLink" id="repo-link"><u>{{repoLink}}</u></a>
+    <br><br>
     <p class="h2">Pedal Name</p>
     <div class="img-container">
         <img [src]="previewUrl" alt="Card image cap">
     </div>
-    
+
     <div class="types">
         <span class="type" *ngFor="let type of types">
             {{type}}
         </span>
     </div>
+
+    <p id="description">{{description}}</p>
 
 </div>
