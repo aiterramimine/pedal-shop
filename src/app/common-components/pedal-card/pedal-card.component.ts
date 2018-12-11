@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
     selector: 'pedal-card',
@@ -13,9 +13,14 @@ export class PedalCardComponent {
     types: string[];
 
     constructor() {
-        this.name = 'dummy';
-        this.manufacturerName = 'dummyManufacturer';
-        this.previewUrl = 'https://picsum.photos/200';
-        this.types = ['Instrument', 'Guitare'];
+    }
+
+    @Input() pedal;
+
+    ngOnInit() {
+        this.name = this.pedal.name || 'Unnamed';
+        this.manufacturerName = this.pedal.manufacturer || 'Unknown';
+        this.previewUrl = this.pedal.previewUrl || 'https://picsum.photos/200';
+        this.types = this.pedal.types;
     }
 }

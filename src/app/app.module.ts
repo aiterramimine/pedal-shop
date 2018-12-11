@@ -13,6 +13,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireList } from '@angular/fire/database';
 import { environment } from 'src/environments/environment.prod';
+import { PluginService } from './plugin.services';
 
 const appRoutes: Routes = [
   {path: '', component: HomePageComponent},
@@ -38,7 +39,7 @@ const appRoutes: Routes = [
     AngularFireModule.initializeApp(environment.firebase, 'pedal-shop'),
     AngularFireDatabaseModule
   ],
-  providers: [],
+  providers: [PluginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -11,12 +11,13 @@ import { PluginService } from '../../plugin.services';
 export class HomePageComponent {
   title = 'WAP Shop';
   welcomeMessage = 'Welcome to the WAP shop';
+  pedals;
 
   constructor(private pluginService: PluginService) {}
 
   ngOnInit() {
     this.pluginService.sayHello();
-    this.pluginService.getListPedals();
+    this.pedals = this.pluginService.getListPedals();
   }
 
 }

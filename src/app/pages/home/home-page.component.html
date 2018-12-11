@@ -12,13 +12,8 @@
     </div>
 </div>
 
-<div class="card-deck">
-    <pedal-card></pedal-card>
-    <pedal-card></pedal-card>
-    <pedal-card></pedal-card>
-    <pedal-card></pedal-card>
-    <pedal-card></pedal-card>
-    <pedal-card></pedal-card>
-    <pedal-card></pedal-card>
-    <pedal-card></pedal-card>
+<div class="card-deck">    
+    <span *ngFor="let pedal of pedals | async">
+        <pedal-card [pedal]="pedal"></pedal-card>
+    </span>
 </div>
