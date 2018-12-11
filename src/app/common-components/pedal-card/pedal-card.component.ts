@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'pedal-card',
@@ -13,7 +13,7 @@ export class PedalCardComponent {
     previewUrl: string;
     types: string[];
 
-    constructor(private router: Router) {
+    constructor(private router: Router, private route: ActivatedRoute) {
     }
 
     @Input() pedal;
@@ -27,6 +27,6 @@ export class PedalCardComponent {
 
     onSelectPedal() {
         console.log(this.pedal);
-        this.router.navigate['details/' + this.pedal.key];
+        this.router.navigate(['details/' + this.pedal.key], {relativeTo: this.route});
     }
 }

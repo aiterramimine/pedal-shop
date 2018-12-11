@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 export class PluginService {
     pedals: AngularFireList<any>
 
-    constructor(db: AngularFireDatabase) {
+    constructor(private db: AngularFireDatabase) {
         this.pedals = db.list('pedals');
         
         //pedals.push({ name: 'hihihi' });
@@ -20,6 +20,10 @@ export class PluginService {
 
     sayHello() {
         console.log("Hello !")
+    }
+
+    getById(id: string) {
+        return this.db.object('pedals/' + id).valueChanges();
     }
 
     getListPedals(): AngularFireList<any> {

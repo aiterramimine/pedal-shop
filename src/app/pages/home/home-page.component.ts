@@ -15,13 +15,11 @@ export class HomePageComponent {
   title = 'WAP Shop';
   welcomeMessage = 'Welcome to the WAP shop';
   pedals;
-  //pedals = [];
 
   constructor(private pluginService: PluginService, private router: Router) {
   }
 
   ngOnInit() {
-    //this.pedals = [];
     this.pluginService.sayHello();
     this.pedals = this.pluginService.getListPedals().snapshotChanges().pipe(
       map(changes => {

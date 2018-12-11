@@ -1,14 +1,14 @@
-<div class="container">
-    <p class="h4">{{author}}</p>
+<div class="container" *ngIf="pedal">
+    <p class="h4">{{pedal.manufacturer}}</p>
     <a [href]="repoLink" id="repo-link"><u>{{repoLink}}</u></a>
     <br><br>
-    <p class="h2">Pedal Name</p>
+    <p class="h2">{{pedal.name}}</p>
     <div class="img-container">
         <img [src]="previewUrl" alt="Card image cap">
     </div>
 
     <div class="types">
-        <span class="type" *ngFor="let type of types">
+        <span class="type" *ngFor="let type of pedal.types">
             {{type}}
         </span>
     </div>

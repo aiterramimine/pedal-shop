@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { PluginService } from '../../plugin.services';
 
 /**
  * This is the home page component.
@@ -17,8 +18,9 @@ export class PluginDetailsComponent {
     description: string;
     author: string;
     repoLink: string;
+    pedal;
 
-    constructor(private activatedRoute: ActivatedRoute) {
+    constructor(private activatedRoute: ActivatedRoute, private pluginService: PluginService) {
         this.id = this.activatedRoute.snapshot.params['id'];
         this.previewUrl = 'https://picsum.photos/400';
         this.types = ['Instrument', 'Guitare'];
@@ -27,4 +29,9 @@ export class PluginDetailsComponent {
         this.repoLink = 'https://github.com/falkTX/FluidPlug';
     }
 
+    ngOnInit() {
+        console.log('finding the pedal');
+        this.pluginService.getById(this.id).subscribe(pedal => this.pedal = pedal);
+
+    }
 }
