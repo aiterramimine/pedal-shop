@@ -9,6 +9,11 @@ import { PluginDetailsComponent } from './pages/plugin-details/plugin-details.co
 import { PluginCreationComponent} from './pages/plugin-creation/plugin-creation.component';
 import { FormsModule }   from '@angular/forms';
 
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { AngularFireList } from '@angular/fire/database';
+import { environment } from 'src/environments/environment.prod';
+
 const appRoutes: Routes = [
   {path: '', component: HomePageComponent},
   {path: 'details/:id', component: PluginDetailsComponent},
@@ -29,7 +34,9 @@ const appRoutes: Routes = [
       {enableTracing: false}
     ),
     BrowserModule,
-    FormsModule
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebase, 'pedal-shop'),
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]

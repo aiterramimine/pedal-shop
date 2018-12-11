@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
+import { PluginService } from '../../plugin.services';
 /**
  * This is the home page component.
  */
@@ -12,6 +12,11 @@ export class HomePageComponent {
   title = 'WAP Shop';
   welcomeMessage = 'Welcome to the WAP shop';
 
-  constructor() {}
+  constructor(private pluginService: PluginService) {}
+
+  ngOnInit() {
+    this.pluginService.sayHello();
+    this.pluginService.getListPedals();
+  }
 
 }
