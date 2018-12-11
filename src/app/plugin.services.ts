@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 
-import { AngularFireDatabase } from '@angular/fire/database';
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class PluginService {
-    pedals: Observable<any[]>
+    pedals: AngularFireList<any>
 
     constructor(db: AngularFireDatabase) {
-        this.pedals = db.list('pedals').valueChanges();
+        this.pedals = db.list('pedals');
+        
         //pedals.push({ name: 'hihihi' });
         // this.pedals.forEach(item => {
         //     console.log(item)
@@ -21,7 +22,7 @@ export class PluginService {
         console.log("Hello !")
     }
 
-    getListPedals(): Observable<any> {
+    getListPedals(): AngularFireList<any> {
         let i = 0;
         return this.pedals
     }

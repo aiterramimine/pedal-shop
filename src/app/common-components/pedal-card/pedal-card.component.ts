@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'pedal-card',
@@ -12,7 +13,7 @@ export class PedalCardComponent {
     previewUrl: string;
     types: string[];
 
-    constructor() {
+    constructor(private router: Router) {
     }
 
     @Input() pedal;
@@ -22,5 +23,10 @@ export class PedalCardComponent {
         this.manufacturerName = this.pedal.manufacturer || 'Unknown';
         this.previewUrl = this.pedal.previewUrl || 'https://picsum.photos/200';
         this.types = this.pedal.types;
+    }
+
+    onSelectPedal() {
+        console.log(this.pedal);
+        this.router.navigate['details/' + this.pedal.key];
     }
 }

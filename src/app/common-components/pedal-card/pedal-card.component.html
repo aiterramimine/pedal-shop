@@ -1,7 +1,7 @@
 <div class="card">
     <img class="card-img-top" [src]="previewUrl" alt="Card image cap">
     <div class="card-body">
-        <h5 class="card-title">{{name}}</h5>
+        <h5 class="card-title" (click)="onSelectPedal(pedal)">{{name}}</h5>
         <p class="card-text">{{manufacturerName}}</p>
         <div class="types">
             <span class="type" *ngFor="let type of types">
