@@ -15,6 +15,7 @@ import { AngularFireList } from '@angular/fire/database';
 import { environment } from 'src/environments/environment.prod';
 import { PluginService } from './plugin.services';
 
+
 const appRoutes: Routes = [
   {path: '', component: HomePageComponent},
   {path: 'details/:id', component: PluginDetailsComponent},
