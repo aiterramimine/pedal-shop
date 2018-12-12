@@ -12,6 +12,7 @@ import { FormsModule }   from '@angular/forms';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFireList } from '@angular/fire/database';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from 'src/environments/environment.prod';
 import { PluginService } from './plugin.services';
 
@@ -38,7 +39,8 @@ const appRoutes: Routes = [
     BrowserModule,
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase, 'pedal-shop'),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AngularFireStorageModule
   ],
   providers: [PluginService],
   bootstrap: [AppComponent]

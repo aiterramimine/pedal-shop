@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PluginService } from '../../plugin.services';
 
 /**
  * This is the home page component.
@@ -15,9 +16,15 @@ export class PluginCreationComponent {
     repoLink: string;
     description: string;
     tagsStr: string;
+    pictureId: string;
 
-    constructor() {
+    constructor(private pluginService: PluginService) {
+    }
 
+    upload(event) {
+      this.pictureId = "";
+
+      this.pictureId = this.pluginService.uploadFile(event.target.files[0])
     }
 
 }
