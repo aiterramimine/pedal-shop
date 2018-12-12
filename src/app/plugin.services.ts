@@ -12,11 +12,6 @@ export class PluginService {
 
     constructor(private db: AngularFireDatabase, private storage: AngularFireStorage) {
         this.pedals = db.list('pedals');
-        
-        //pedals.push({ name: 'hihihi' });
-        // this.pedals.forEach(item => {
-        //     console.log(item)
-        // })
      }
 
     sayHello() {
@@ -30,6 +25,11 @@ export class PluginService {
     getListPedals(): AngularFireList<any> {
         let i = 0;
         return this.pedals
+        //ToDo : redirection
+    }
+
+    addPedal(pedal) {
+        this.pedals.push(pedal);     
     }
 
     uploadFile(file): string {   
