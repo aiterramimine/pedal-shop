@@ -26,7 +26,6 @@ export class PedalCardComponent {
     }
 
     onSelectPedal() {
-        //console.log(this.pedal);
         this.router.navigate(['details/' + this.pedal.key], {relativeTo: this.route});
     }
 }

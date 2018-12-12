@@ -12,10 +12,6 @@ export class PluginService {
 
     constructor(private db: AngularFireDatabase, private storage: AngularFireStorage) {
         this.pedals = db.list('pedals');
-     }
-
-    sayHello() {
-        console.log("Hello !")
     }
 
     getById(id: string) {
@@ -54,5 +50,9 @@ export class PluginService {
 
         return '';
 
+    }
+
+    updatePedal(id, pedal) {
+        this.db.object('pedals/' + id).set(pedal);
     }
 }

@@ -20,8 +20,21 @@ export class PluginCreationComponent {
     tags: string;
     pictureUrl: string;
     isUploading: boolean;
+    id: string;
 
     constructor(private pluginService: PluginService, private router: Router, private activatedRoute: ActivatedRoute) {
+      let params = this.activatedRoute.snapshot.paramMap['params'];
+
+      console.log(params);
+      this.id = this.activatedRoute.snapshot.params['id'];
+      this.name = params['name'];
+      this.author = params['author'];
+      this.description = params['description'];
+      this.pictureUrl = params['pictureUrl'];
+      this.repoLink = params['repoLink'];
+      this.manufacturer = params['author'];
+      this.tags = params['tags'] ? params['tags'].replace(',', ' ') : '';
+
     }
 
     upload(event) {
@@ -58,7 +71,14 @@ export class PluginCreationComponent {
         pedal["description"] = this.description;
       }
 
-      this.pluginService.addPedal(pedal);
+      if(this.id) {
+        console.log('updating');
+        this.pluginService.updatePedal(this.id, pedal);
+      } else {
+        this.pluginService.addPedal(pedal);
+      }
+      console.log(this.id);
+      
 
       this.router.navigate(['/']);
     }

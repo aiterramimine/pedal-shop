@@ -2,6 +2,7 @@
     <p class="h4">{{pedal.manufacturer}}</p>
     <a [href]="repoLink" id="repo-link"><u>{{pedal.repoLink}}</u></a>
     <br><br>
+    <button (click)="modifier()">Modifier</button>
     <p class="h2">{{pedal.name}}</p>
     <div class="img-container">
         <img [src]="previewUrl" alt="Card image cap">
@@ -14,5 +15,5 @@
     </div>
 
     <p id="description">{{pedal.description}}</p>
-
+    
 </div>

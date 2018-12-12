@@ -20,7 +20,9 @@ import { PluginService } from './plugin.services';
 const appRoutes: Routes = [
   {path: '', component: HomePageComponent},
   {path: 'details/:id', component: PluginDetailsComponent},
-  {path: 'creation', component: PluginCreationComponent}
+  {path: 'creation', component: PluginCreationComponent},
+  {path: 'creation/:id', component: PluginCreationComponent}
+
 ];
 
 @NgModule({
