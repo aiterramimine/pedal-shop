@@ -41,4 +41,8 @@ export class PluginService {
 
         return randomId;
     }
+
+    updatePedal(id, pedal) {
+        this.db.object('pedals/' + id).set(pedal);
+    }
 }

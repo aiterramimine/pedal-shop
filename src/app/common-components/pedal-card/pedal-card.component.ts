@@ -23,11 +23,9 @@ export class PedalCardComponent {
         this.manufacturerName = this.pedal.manufacturer || 'Unknown';
         this.previewUrl = this.pedal.previewUrl || 'https://picsum.photos/200';
         this.types = Array.isArray(this.pedal.tags) ?  this.pedal.tags : [];
-        console.log(this.pedal.tags);
     }
 
     onSelectPedal() {
-        console.log(this.pedal);
         this.router.navigate(['details/' + this.pedal.key], {relativeTo: this.route});
     }
 }
