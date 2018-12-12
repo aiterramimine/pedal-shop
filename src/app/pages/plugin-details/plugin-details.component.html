@@ -1,6 +1,6 @@
 <div class="container" *ngIf="pedal">
     <p class="h4">{{pedal.manufacturer}}</p>
-    <a [href]="repoLink" id="repo-link"><u>{{repoLink}}</u></a>
+    <a [href]="repoLink" id="repo-link"><u>{{pedal.repoLink}}</u></a>
     <br><br>
     <p class="h2">{{pedal.name}}</p>
     <div class="img-container">
@@ -8,11 +8,11 @@
     </div>
 
     <div class="types">
-        <span class="type" *ngFor="let type of pedal.types">
+        <span class="type" *ngFor="let type of pedal.tags">
             {{type}}
         </span>
     </div>
 
-    <p id="description">{{description}}</p>
+    <p id="description">{{pedal.description}}</p>
 
 </div>
