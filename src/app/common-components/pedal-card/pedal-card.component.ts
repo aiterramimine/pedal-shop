@@ -22,7 +22,8 @@ export class PedalCardComponent {
         this.name = this.pedal.name || 'Unnamed';
         this.manufacturerName = this.pedal.manufacturer || 'Unknown';
         this.previewUrl = this.pedal.previewUrl || 'https://picsum.photos/200';
-        this.types = this.pedal.types;
+        this.types = Array.isArray(this.pedal.tags) ?  this.pedal.tags : [];
+        console.log(this.pedal.tags);
     }
 
     onSelectPedal() {
