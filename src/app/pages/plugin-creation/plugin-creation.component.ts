@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { PluginService } from '../../plugin.services';
 import { environment } from 'src/environments/environment.prod';
-
+import { Router, ActivatedRoute} from '@angular/router';
 /**
  * This is the home page component.
  */
@@ -20,7 +20,7 @@ export class PluginCreationComponent {
     tags: string;
     pictureUrl: string;
 
-    constructor(private pluginService: PluginService) {
+    constructor(private pluginService: PluginService, private router: Router, private activatedRoute: ActivatedRoute) {
     }
 
     upload(event) {
@@ -57,7 +57,9 @@ export class PluginCreationComponent {
         pedal["description"] = this.description;
       }
 
-      this.pluginService.addPedal(pedal)
+      this.pluginService.addPedal(pedal);
+
+      this.router.navigate(['/']);
     }
 
 }
