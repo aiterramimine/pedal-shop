@@ -20,7 +20,6 @@ export class HomePageComponent {
   }
 
   ngOnInit() {
-    this.pluginService.sayHello();
     this.pedals = this.pluginService.getListPedals().snapshotChanges().pipe(
       map(changes => {
       return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
