@@ -19,7 +19,8 @@ export class PluginService {
     }
 
     getById(id: string) {
-        return this.db.object('pedals/' + id).valueChanges();
+        let pedal = this.db.object('pedals/' + id).valueChanges();
+        return pedal;
     }
 
     getListPedals(): AngularFireList<any> {
@@ -32,13 +33,26 @@ export class PluginService {
         this.pedals.push(pedal);     
     }
 
-    uploadFile(file): string {   
+    uploadFile(file, caller): string {   
         const randomId = Math.random().toString(36).substring(2);
-        let ref;
-        ref = this.storage.ref(randomId);
-        ref.put(file);
-        console.log("file uploaded")
 
-        return randomId;
+        let ref;
+
+        ref = this.storage.ref(randomId);
+
+        ref.put(file)
+            .then(task => task.ref.getDownloadURL())
+            .then(url => {
+                caller.pictureUrl = url;
+                caller.isUploading = false;
+                return url;
+            })
+            .catch((error) => {
+                console.error(error)
+                return '';
+            });
+
+        return '';
+
     }
 }

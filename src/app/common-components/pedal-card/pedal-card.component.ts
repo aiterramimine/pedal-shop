@@ -10,7 +10,7 @@ export class PedalCardComponent {
 
     name: string;
     manufacturerName: string;
-    previewUrl: string;
+    pictureUrl: string;
     types: string[];
 
     constructor(private router: Router, private route: ActivatedRoute) {
@@ -20,14 +20,13 @@ export class PedalCardComponent {
 
     ngOnInit() {
         this.name = this.pedal.name || 'Unnamed';
-        this.manufacturerName = this.pedal.manufacturer || 'Unknown';
-        this.previewUrl = this.pedal.previewUrl || 'https://picsum.photos/200';
+        this.manufacturerName = this.pedal.manufacturer || 'Unknown manufacturer';
+        this.pictureUrl = (this.pedal.pictureUrl ? this.pedal.pictureUrl : 'https://picsum.photos/200');
         this.types = Array.isArray(this.pedal.tags) ?  this.pedal.tags : [];
-        console.log(this.pedal.tags);
     }
 
     onSelectPedal() {
-        console.log(this.pedal);
+        //console.log(this.pedal);
         this.router.navigate(['details/' + this.pedal.key], {relativeTo: this.route});
     }
 }

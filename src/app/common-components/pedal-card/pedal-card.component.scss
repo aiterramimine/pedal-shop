@@ -1,5 +1,10 @@
 .card-img-top {
+    display: block;
     padding: 10px;
+    max-height: 300px;
+    max-width: 300px;
+    width: auto;
+    height: auto;
 }
 
 .card {

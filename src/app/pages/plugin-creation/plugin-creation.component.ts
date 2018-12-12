@@ -19,15 +19,16 @@ export class PluginCreationComponent {
     description: string;
     tags: string;
     pictureUrl: string;
+    isUploading: boolean;
 
     constructor(private pluginService: PluginService, private router: Router, private activatedRoute: ActivatedRoute) {
     }
 
     upload(event) {
+      this.isUploading = true;
       this.pictureUrl = "";
 
-      this.pictureUrl = environment.firebase.storageBucket + '/' + this.pluginService.uploadFile(event.target.files[0])
-      console.log(this.pictureUrl)
+      this.pictureUrl = environment.firebase.storageBucket + '/' + this.pluginService.uploadFile(event.target.files[0], this)
     }
 
     checkForm() {

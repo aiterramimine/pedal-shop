@@ -37,8 +37,8 @@
             <input type="file" (change)="upload($event)" accept=".png,.jpg" />
         </div>
 
-        <button [disabled]="!checkForm()" (click)="create()">
-            Create
+        <button type="button" [disabled]="!checkForm() || isUploading" (click)="create()">
+           {{ isUploading ? "Uploading..." :!checkForm() ? "Fill the form" : "Create" }}
         </button>
         
     </form>
