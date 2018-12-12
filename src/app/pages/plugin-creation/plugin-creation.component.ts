@@ -23,6 +23,7 @@ export class PluginCreationComponent {
 
     constructor(private pluginService: PluginService, private router: Router, private activatedRoute: ActivatedRoute) {
       let params = this.activatedRoute.snapshot.paramMap['params'];
+
       console.log(params);
       this.id = this.activatedRoute.snapshot.params['id'];
       this.name = params['name'];
@@ -31,7 +32,7 @@ export class PluginCreationComponent {
       this.pictureUrl = params['pictureUrl'];
       this.repoLink = params['repoLink'];
       this.manufacturer = params['author'];
-      this.tags = params['tags'].replace(',', ' ');
+      this.tags = params['tags'] ? params['tags'].replace(',', ' ') : '';
 
     }
 
