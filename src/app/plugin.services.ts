@@ -19,6 +19,14 @@ export class PluginService {
         return pedal;
     }
 
+    deleteById(id: string) {
+        let t = this;
+
+        this.db.object('pedals/' + id).remove().then(function() {
+            console.log(id)
+        })
+    }
+
     getByAuthor(author: string) {
         let pedals = this.db.list('pedals', ref => ref.orderByChild('author').equalTo(author))
         return pedals;
