@@ -13,7 +13,7 @@ import { PluginService } from '../../plugin.services';
 export class PluginDetailsComponent {
 
     id: string;
-    previewUrl: string;
+    pictureUrl: string;
     types: string[];
     description: string;
     author: string;
@@ -22,7 +22,7 @@ export class PluginDetailsComponent {
 
     constructor(private activatedRoute: ActivatedRoute, private pluginService: PluginService, private router: Router) {
         this.id = this.activatedRoute.snapshot.params['id'];
-        this.previewUrl = 'https://picsum.photos/400';
+        this.pictureUrl = 'https://picsum.photos/400';
         this.types = ['Instrument', 'Guitare'];
         this.description = 'This is an awsome plugin with a very good graphical interface. \n It can add many effects to the sound.';
         this.author = 'Amine';
@@ -31,8 +31,10 @@ export class PluginDetailsComponent {
 
     ngOnInit() {
         console.log('finding the pedal');
-        this.pluginService.getById(this.id).subscribe(pedal => this.pedal = pedal);
-
+        this.pluginService.getById(this.id).subscribe(pedal => {
+             this.pedal = pedal;
+             this.pictureUrl = this.pedal.pictureUrl;
+        });
     }
 
     modifier() {
@@ -42,7 +44,7 @@ export class PluginDetailsComponent {
             name: this.pedal.name,
             author: this.pedal.author,
             description: this.pedal.description,
-            pictureUrl: this.pedal.url,
+            pictureUrl: this.pedal.pictureUrl,
             repoLink: this.pedal.repoLink,
             tags: this.pedal.tags,
         }]);
