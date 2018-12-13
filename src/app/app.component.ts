@@ -31,5 +31,6 @@ export class AppComponent {
       console.log(t.profile === undefined)
     });
     console.log(this.profile === undefined)
+    window.location.reload();
   }
 }
