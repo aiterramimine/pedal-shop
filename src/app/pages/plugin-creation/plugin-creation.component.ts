@@ -26,7 +26,6 @@ export class PluginCreationComponent {
     constructor(private pluginService: PluginService, private router: Router, private activatedRoute: ActivatedRoute, private authenticationService : AuthenticationService) {
       let params = this.activatedRoute.snapshot.paramMap['params'];
 
-      console.log(params);
       this.id = this.activatedRoute.snapshot.params['id'];
       this.name = params['name'];
       this.author = authenticationService.isAuthenticated() ? authenticationService.getFullName() : '';
@@ -73,12 +72,10 @@ export class PluginCreationComponent {
       }
 
       if(this.id) {
-        console.log('updating');
         this.pluginService.updatePedal(this.id, pedal);
       } else {
         this.pluginService.addPedal(pedal);
       }
-      console.log(this.id);
       
 
       this.router.navigate(['/']);

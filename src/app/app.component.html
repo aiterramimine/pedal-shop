@@ -29,11 +29,11 @@
         </li>
 
         <li class="nav-item">
-          <a class="nav-link">My plugins</a>
+          <a class="nav-link" [routerLink]="'/my-plugins/' + profile" *ngIf="profile !== undefined">My plugins</a>
         </li>
 
         <li class="nav-item">
-          <a class="nav-link" routerLink="/creation">Create plugin</a>
+          <a class="nav-link" routerLink="/creation" *ngIf="profile !== undefined">Create plugin</a>
         </li>
 
     </ul>
