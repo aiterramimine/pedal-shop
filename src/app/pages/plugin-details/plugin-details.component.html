@@ -1,22 +1,29 @@
 <div class="container" *ngIf="pedal">
-    <p class="h4">{{pedal.manufacturer}}</p>
-    <a [href]="repoLink" id="repo-link"><u>{{pedal.repoLink}}</u></a>
-    <br><br>
-    <!-- <div *ngIf="authenticationService.isAuthenticated() && pedal.author === authenticationService.getFullName()"> -->
-    <button (click)="update()">Update</button>
-    <button (click)="delete(id)">Delete</button>
-    <!-- </div> -->
-    <p class="h2">{{pedal.name}}</p>
+    <p class="name align-center">{{pedal.name}}</p>
+    <p class="manufacturer align-center" *ngIf="pedal.manufacturer">Manufactured by {{pedal.manufacturer }}</p>
+
     <div class="img-container">
         <img [src]="pictureUrl" alt="Card image cap">
     </div>
+    <div class="align-center" *ngIf="authenticationService.isAuthenticated() && pedal.author === authenticationService.getFullName()">
+    <button (click)="update()">Update</button>
+    <button (click)="delete(id)">Delete</button>
+    </div>
 
-    <div class="types">
+    <div class="types" *ngIf="types.length > 0">
         <span class="type" *ngFor="let type of pedal.tags">
             {{type}}
         </span>
     </div>
 
-    <p id="description">{{pedal.description}}</p>
+    <div id="description" class="align-center"><div class="label" *ngIf="pedal.description">Description</div>  {{pedal.description}}</div>
     
+    <div class="align-center author">
+        Created by {{ pedal.author }}
+    </div>
+
+    <div class="align-center repo" *ngIf="pedal.repoLink">
+        <a href="{{pedal.repoLink}}">Available on github</a>
+    </div>
+
 </div>
