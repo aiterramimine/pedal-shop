@@ -19,6 +19,11 @@ export class PluginService {
         return pedal;
     }
 
+    getByAuthor(author: string) {
+        let pedals = this.db.list('pedals', ref => ref.orderByChild('author').equalTo(author))
+        return pedals;
+    }
+
     getListPedals(): AngularFireList<any> {
         let i = 0;
         return this.pedals

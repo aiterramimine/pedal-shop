@@ -3,6 +3,7 @@ import { PluginService } from '../../plugin.services';
 import { environment } from 'src/environments/environment.prod';
 import { Router, ActivatedRoute} from '@angular/router';
 import { map } from 'rxjs/operators';
+import { AuthenticationService } from '../../authentication.service';
 
 /**
  * This is the home page component.
@@ -19,16 +20,20 @@ export class MyPluginsComponent {
     title = 'WAP Shop';
     welcomeMessage = 'Welcome to the WAP shop';
     pedals;
-    constructor(private pluginService: PluginService, private router: Router, private activatedRoute: ActivatedRoute) {
+    constructor(private pluginService: PluginService, private router: Router, private activatedRoute: ActivatedRoute, private authenticationService : AuthenticationService) {
 
       this.id = this.activatedRoute.snapshot.params['name'];
 
     }
 
     ngOnInit() {
-        this.pedals = this.pluginService.getListPedals().snapshotChanges().pipe(
+      if (this.authenticationService.isAuthenticated()) {      
+        this.pedals = this.pluginService.getByAuthor(this.authenticationService.getFullName()).snapshotChanges().pipe(
           map(changes => {
           return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
         }));
+      } else {
+        this.pedals = [];
       }
+    }
 }

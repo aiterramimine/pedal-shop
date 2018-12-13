@@ -4,7 +4,7 @@
     <form>
 
         <div *ngIf="author.length === 0; else elseBlock">
-            You are not connected fdp {{author}}
+            <span style="color:red;">You are not authenticated</span>
         </div>
         <ng-template #elseBlock>
 
