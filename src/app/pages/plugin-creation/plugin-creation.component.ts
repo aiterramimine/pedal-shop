@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { PluginService } from '../../plugin.services';
 import { environment } from 'src/environments/environment.prod';
 import { Router, ActivatedRoute} from '@angular/router';
+import { AuthenticationService } from '../../authentication.service';
 /**
  * This is the home page component.
  */
@@ -22,13 +23,13 @@ export class PluginCreationComponent {
     isUploading: boolean;
     id: string;
 
-    constructor(private pluginService: PluginService, private router: Router, private activatedRoute: ActivatedRoute) {
+    constructor(private pluginService: PluginService, private router: Router, private activatedRoute: ActivatedRoute, private authenticationService : AuthenticationService) {
       let params = this.activatedRoute.snapshot.paramMap['params'];
 
       console.log(params);
       this.id = this.activatedRoute.snapshot.params['id'];
       this.name = params['name'];
-      this.author = params['author'];
+      this.author = authenticationService.isAuthenticated() ? authenticationService.getFullName() : '';
       this.description = params['description'];
       this.pictureUrl = params['pictureUrl'];
       this.repoLink = params['repoLink'];

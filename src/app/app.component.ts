@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from './authentication.service';
 
 @Component({
   selector: 'app-root',
@@ -9,28 +10,16 @@ export class AppComponent {
   title = 'pedal-shop';
   profile;
 
+  constructor(private authenticationService : AuthenticationService) {
+  }
 
   signIn() {
-
     let t = this;
-    var auth2 = gapi.auth2.getAuthInstance();
-
-    // Sign-In
-    auth2.signIn()
-    .then(googleUser => {
-      t.profile = googleUser.getBasicProfile();
-      console.log(t.profile)
-    });
+    this.authenticationService.signIn(this);
   }
 
   signOut() {
     let t = this;
-
-    gapi.auth2.getAuthInstance().signOut().then(function() {
-      t.profile = undefined;
-      console.log(t.profile === undefined)
-    });
-    console.log(this.profile === undefined)
-    window.location.reload();
+    this.authenticationService.signOut(this);
   }
 }

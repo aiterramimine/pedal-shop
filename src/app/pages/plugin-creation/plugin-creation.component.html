@@ -2,44 +2,51 @@
     
     <p class="h2">Pedal creation </p>
     <form>
-        <div class="form-group">
-            <label for="exampleFormControlInput1">Pedal name<span style="color:red;"> *</span></label>
-            <input type="text" class="form-control" id="name" [(ngModel)]="name" [ngModelOptions]="{standalone: true}">
-        </div>
-        
-        <div class="form-group">
-            <label for="exampleFormControlInput1">Author<span style="color:red;"> *</span></label>
-            <input type="text" class="form-control" id="author" [(ngModel)]="author" [ngModelOptions]="{standalone: true}">
-        </div>
-        
-        <div class="form-group">
-            <label for="exampleFormControlInput1">Manufacturer<span style="color:red;"> *</span></label>
-            <input type="text" class="form-control" id="manufacturer" [(ngModel)]="manufacturer" [ngModelOptions]="{standalone: true}">
-        </div>
 
-        <div class="form-group">
-            <label for="exampleFormControlInput1">Repo URL</label>
-            <input type="text" class="form-control" id="repo-url" [(ngModel)]="repoLink" [ngModelOptions]="{standalone: true}">
+        <div *ngIf="author.length === 0; else elseBlock">
+            You are not connected fdp {{author}}
         </div>
+        <ng-template #elseBlock>
 
-        <div class="form-group">
-            <label for="exampleFormControlInput1">Description</label>
-            <input type="text" class="form-control" id="description" [(ngModel)]="description" [ngModelOptions]="{standalone: true}">
-        </div> 
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Pedal name<span style="color:red;"> *</span></label>
+                <input type="text" class="form-control" id="name" [(ngModel)]="name" [ngModelOptions]="{standalone: true}">
+            </div>
+            
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Author<span style="color:red;"> *</span></label>
+                <input type="text" class="form-control" id="author" [(ngModel)]="author" [ngModelOptions]="{standalone: true}" disabled>
+            </div>
+            
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Manufacturer<span style="color:red;"> *</span></label>
+                <input type="text" class="form-control" id="manufacturer" [(ngModel)]="manufacturer" [ngModelOptions]="{standalone: true}">
+            </div>
 
-        <div class="form-group">
-            <label for="exampleFormControlInput1">Tags <span style="font-size: 12px">(separated by spaces)</span></label>
-            <input type="text" class="form-control" id="tags" [(ngModel)]="tags" [ngModelOptions]="{standalone: true}">
-        </div> 
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Repo URL</label>
+                <input type="text" class="form-control" id="repo-url" [(ngModel)]="repoLink" [ngModelOptions]="{standalone: true}">
+            </div>
 
-        <div class="form-group">
-            <label for="file">Picture<span style="color:red;"> *</span></label><br/>
-            <input type="file" (change)="upload($event)" accept=".png,.jpg" />
-        </div>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Description</label>
+                <input type="text" class="form-control" id="description" [(ngModel)]="description" [ngModelOptions]="{standalone: true}">
+            </div> 
 
-        <button type="button" [disabled]="!checkForm() || isUploading" (click)="create()">
-           {{ isUploading ? "Uploading..." :!checkForm() ? "Fill the form" : "Create" }}
-        </button>
+            <div class="form-group">
+                <label for="exampleFormControlInput1">Tags <span style="font-size: 12px">(separated by spaces)</span></label>
+                <input type="text" class="form-control" id="tags" [(ngModel)]="tags" [ngModelOptions]="{standalone: true}">
+            </div> 
+
+            <div class="form-group">
+                <label for="file">Picture<span style="color:red;"> *</span></label><br/>
+                <input type="file" (change)="upload($event)" accept=".png,.jpg" />
+            </div>
+
+            <button type="button" [disabled]="!checkForm() || isUploading" (click)="create()">
+            {{ isUploading ? "Uploading..." :!checkForm() ? "Fill the form" : "Create" }}
+            </button>
+        </ng-template>
         
     </form>
 </div>
