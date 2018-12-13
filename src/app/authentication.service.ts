@@ -35,7 +35,6 @@ export class AuthenticationService {
     }
 
     getFullName() {
-        console.log(this.profile)
         return this.profile.getName();
     }
 

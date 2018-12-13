@@ -2,7 +2,10 @@
     <p class="h4">{{pedal.manufacturer}}</p>
     <a [href]="repoLink" id="repo-link"><u>{{pedal.repoLink}}</u></a>
     <br><br>
-    <button (click)="modifier()">Modifier</button>
+    <!-- <div *ngIf="authenticationService.isAuthenticated() && pedal.author === authenticationService.getFullName()"> -->
+    <button (click)="update()">Update</button>
+    <button (click)="delete(id)">Delete</button>
+    <!-- </div> -->
     <p class="h2">{{pedal.name}}</p>
     <div class="img-container">
         <img [src]="pictureUrl" alt="Card image cap">

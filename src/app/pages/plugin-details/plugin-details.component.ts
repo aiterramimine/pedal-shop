@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router, ActivatedRoute } from '@angular/router';
 import { PluginService } from '../../plugin.services';
+import { AuthenticationService } from '../../authentication.service';
 
 /**
  * This is the home page component.
@@ -20,7 +21,7 @@ export class PluginDetailsComponent {
     repoLink: string;
     pedal;
 
-    constructor(private activatedRoute: ActivatedRoute, private pluginService: PluginService, private router: Router) {
+    constructor(private activatedRoute: ActivatedRoute, private pluginService: PluginService, private router: Router, private authenticationService : AuthenticationService) {
         this.id = this.activatedRoute.snapshot.params['id'];
         this.pictureUrl = 'https://picsum.photos/400';
         this.types = ['Instrument', 'Guitare'];
@@ -36,7 +37,7 @@ export class PluginDetailsComponent {
         });
     }
 
-    modifier() {
+    update() {
         this.router.navigate(['/creation/' + this.id, {
             key: this.id,
             name: this.pedal.name,
@@ -46,5 +47,12 @@ export class PluginDetailsComponent {
             repoLink: this.pedal.repoLink,
             tags: this.pedal.tags,
         }]);
+    }
+
+    delete(id: string) {
+        if (confirm("Are you sure you want to delete this pedal ?")) {
+            this.pluginService.deleteById(id)
+            this.router.navigate(['/']);
+        }
     }
 }

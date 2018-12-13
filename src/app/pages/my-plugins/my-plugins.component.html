@@ -12,9 +12,17 @@
         </div>
     </div>
     
-    <div class="card-deck">    
-        <span *ngFor="let pedal of pedals | async">
-            
-            <pedal-card [pedal]="pedal"></pedal-card>
-        </span>
+    <div class="card-deck"> 
+        <div *ngIf="pedals.length > 0; else elseBlock">
+            <span *ngFor="let pedal of pedals | async">
+                
+                <pedal-card [pedal]="pedal"></pedal-card>
+            </span>
+        </div>
+        <ng-template #elseBlock>
+            <div *ngIf="authenticationService.isAuthenticated(); else elseBlock2">It seems like you haven't created any pedal yet. <a class="nav-link" routerLink="/creation" >Create your first one</a></div>
+            <ng-template #elseBlock2>
+                <span style="color:red;">You are not connected.</span>
+            </ng-template>
+        </ng-template>
     </div>
