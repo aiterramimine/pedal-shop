@@ -15,13 +15,15 @@ import { AngularFireList } from '@angular/fire/database';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { environment } from 'src/environments/environment.prod';
 import { PluginService } from './plugin.services';
+import { MyPluginsComponent } from './pages/my-plugins/my-plugins.component';
 
 
 const appRoutes: Routes = [
   {path: '', component: HomePageComponent},
   {path: 'details/:id', component: PluginDetailsComponent},
   {path: 'creation', component: PluginCreationComponent},
-  {path: 'creation/:id', component: PluginCreationComponent}
+  {path: 'creation/:id', component: PluginCreationComponent},
+  {path: 'my-plugins/:name', component: MyPluginsComponent}
 
 ];
 
@@ -31,7 +33,8 @@ const appRoutes: Routes = [
     HomePageComponent,
     PedalCardComponent,
     PluginDetailsComponent,
-    PluginCreationComponent
+    PluginCreationComponent,
+    MyPluginsComponent
   ],
   imports: [
     RouterModule.forRoot(

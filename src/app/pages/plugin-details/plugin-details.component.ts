@@ -30,7 +30,6 @@ export class PluginDetailsComponent {
     }
 
     ngOnInit() {
-        console.log('finding the pedal');
         this.pluginService.getById(this.id).subscribe(pedal => {
              this.pedal = pedal;
              this.pictureUrl = this.pedal.pictureUrl;
@@ -38,7 +37,6 @@ export class PluginDetailsComponent {
     }
 
     modifier() {
-        console.log('modification');
         this.router.navigate(['/creation/' + this.id, {
             key: this.id,
             name: this.pedal.name,
