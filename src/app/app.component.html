@@ -31,7 +31,7 @@
     </ul>
   </div>
   <div class="g-signin2" (click)="signIn()" *ngIf="profile === undefined"></div>
-  <div *ngIf="profile !== undefined">Hello {{profile.getName()}} !&nbsp;&nbsp;</div>
+  <div *ngIf="profile !== undefined"><img [src]="profile.getImageUrl()" class="avatar"> Hello {{profile.getName()}} !&nbsp;&nbsp;</div>
   <div (click)="signOut()" *ngIf="profile !== undefined" class="sign-out">Sign out</div>
 </nav>
 
