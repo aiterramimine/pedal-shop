@@ -12,12 +12,3 @@ The user can create pedals by providing relevant information and preview image.
 The user can only updates the pedals he created.
 The user can access his own pedals.
 The user can logout.
-
-Bonjour monsieur,
-
-Veuillez trouver ci-joint notre projet concernant les webaudio plugins.
-
-Pour l'instant, il n'est pas mis en prod mais nous le ferons d'ici la fin de semaine et vous enverrons un lien.
-
-Cordialement,
-Thomas Gautier et Amine Ait Errami
