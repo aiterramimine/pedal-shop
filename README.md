@@ -1,5 +1,6 @@
 # To lauch on port 4200:
-ng serve
+npm install<br/>
+ng serve<br/>
 Please be aware that the project won't be able to connect to firebase if your domain is different to http://localhost:4200
 
 # Overview:

@@ -20,6 +20,7 @@ export class MyPluginsComponent {
     title = 'WAP Shop';
     welcomeMessage = 'Welcome to the WAP shop';
     pedals;
+    hasPedal: boolean;
     constructor(private pluginService: PluginService, private router: Router, private activatedRoute: ActivatedRoute, private authenticationService : AuthenticationService) {
 
       this.id = this.activatedRoute.snapshot.params['name'];
@@ -27,13 +28,13 @@ export class MyPluginsComponent {
     }
 
     ngOnInit() {
-      if (this.authenticationService.isAuthenticated()) {      
+      this.hasPedal = false;
+      if (this.authenticationService.isAuthenticated()) {
         this.pedals = this.pluginService.getByAuthor(this.authenticationService.getFullName()).snapshotChanges().pipe(
           map(changes => {
-          return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
+            return changes.map(c => ({ key: c.payload.key, ...c.payload.val() }))
         }));
-      } else {
-        this.pedals = [];
+        this.hasPedal = this.pedals.subscribe(result => {console.log(result.length > 0)});
       }
     }
 }

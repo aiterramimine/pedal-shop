@@ -13,9 +13,8 @@
     </div>
     
     <div class="card-deck"> 
-        <div *ngIf="pedals.length > 0; else elseBlock">
-            <span *ngFor="let pedal of pedals | async">
-                
+        <div *ngIf="hasPedal; else elseBlock">
+            <span *ngFor="let pedal of pedals | async">                
                 <pedal-card [pedal]="pedal"></pedal-card>
             </span>
         </div>
